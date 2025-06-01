@@ -1,23 +1,15 @@
 #include "Mux.h"
 #include "I2C.h"
 
-// Disposition des capteurs mag
-// 
-// CH6 : U11        CH0 : U8 
-//
-//          CH1 : U9
-//
-// CH7 : U12        CH2 : U10
 
-
-void switch_canal(uint8_t canal)
+void PCA9547_Set_Channel(uint8_t canal)
 {
     canal &= 0x07;
     // D7| D6| D5| D4|
     // X | X | X | X | B3 | B2 | B1 | B0 |
     // B3 : enable bit
     
-    //CTRL = 0xF8; // Forçage à 1 de D7 à B3
+    //CTRL = 0xF8; // Forï¿½age ï¿½ 1 de D7 ï¿½ B3
     //CTRL |= canal;
     
     //CTRL = canal;
@@ -59,7 +51,7 @@ void switch_canal(uint8_t canal)
 }
 
 
-uint8_t read_canal(void)
+uint8_t PCA9547_Read_Channel(void)
 {
     uint8_t canal = 0;
     
